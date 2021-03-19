@@ -16,11 +16,12 @@
     
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
-
+    <script src="./SCRIPT/validaForm.js"></script>
 </head> 
 
 <body>
     <?php
+    session_start();
     include('./header.html');
     ?>
 
@@ -33,23 +34,38 @@
 		    </div><!--//container-->
 	    </section>
 	    <section class="blog-list px-3 py-5 p-md-5">
-            <form class="signup-form justify-content-center pt-3">
+            <form name="form" class="signup-form justify-content-center pt-3" method="POST" action="./SCRIPT/aggiungiMedico.php" onsubmit="return validaMedico()">
                 <div class="form-group">
                     <label class="" for="codice">Codice Medico</label>
                     <input type="text" id="codice" name="codice" class="form-control mr-md-1 semail" placeholder="Codice Medico">
-                    <label class="-" for="semail">Cognome</label>
+                    <div id="errCodice"></div>
+
+                    <label class="" for="semail">Cognome</label>
                     <input type="text" id="cognome" name="cognome" class="form-control mr-md-1 semail" placeholder="Cognome">
-                    <label class="-" for="nome">Nome</label>
+                    <div id="errCognome"></div>                    
+                    
+                    <label class="" for="nome">Nome</label>
                     <input type="tezt" id="nome" name="nome" class="form-control mr-md-1 semail" placeholder="Nome">
-                    <label class="-" for="data">Data Nascita</label>
+                    <div id="errNome"></div>
+                    
+                    <label class="" for="data">Data Nascita</label>
                     <input type="date" id="data" name="data" class="form-control mr-md-1 semail" placeholder="Data Nascita">
-                    <label class="-" for="luogo">Luogo Nascita</label>
+                    <div id="errData"></div>
+
+                    <label class="" for="luogo">Luogo Nascita</label>
                     <input type="text" id="luogo" name="luogo" class="form-control mr-md-1 semail" placeholder="Luogo Nascita">
-                </div>
-                <button type="submit" class="btn btn-primary">Subscribe</button>
+                    <div id="errLuogo"></div>                
+                </div>    
+                <button type="submit" class="btn btn-primary">AGGIUNGI</button>
             </form>
+            <?php
+            if (isset($_SESSION['aggiuntoMedico'])){
+                echo("<p>AGGIUNTO {$_SESSION['aggiuntoMedico']}</p>");
+                unset($_SESSION['aggiuntoMedico']);
+            }
+            ?>
 	    </section>
-	    
+	    <br><br><br><br><br><br><br><br>
 	    <footer class="footer text-center py-2 theme-bg-dark">
 		   
 	        <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->

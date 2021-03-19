@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title>Bootstrap 4 Blog Template For Developers</title>
+    <title>ASL</title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -36,81 +36,65 @@
 		    <div class="container">
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/medico.jfif" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">INSERIMENTO NUOVO MEDICO</a></h3>
-                            <br>
-                            <button class="btn btn-primary">VAI</button>
+						    <h3 class="title mb-1"><a href="./aggiungiMedico.php">INSERIMENTO NUOVO MEDICO</a></h3>
                         </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/paziente.jfif" alt="image">
 					    <div class="media-body">
 						    <h3 class="title mb-1"><a href="blog-post.html">INSERIMENTO NUOVO PAZIENTE</a></h3>
-                            <br>
-                            <button class="btn btn-primary">VAI</button>
                         </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/medici.jfif" alt="image">
 					    <div class="media-body">
 						    <h3 class="title mb-1"><a href="blog-post.html">VISUALIZZA LISTA DI TUTTI I MEDICI</a></h3>
-                            <br>
-                            <button class="btn btn-primary">VAI</button>
                         </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/medicoPaziente.jfif" alt="image">
 					    <div class="media-body">
 						    <h3 class="title mb-1"><a href="blog-post.html">ASSOCIA UN PAZIENTE A UN MEDICO</a></h3>
-                            <br>
-                            <button class="btn btn-primary">VAI</button>
                         </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/pazientiMedico.jfif" alt="image">
 					    <div class="media-body">
 						    <h3 class="title mb-1"><a href="blog-post.html">VISUALIZZA TUTTI I PAZIENTI DI UN MEDICO</a></h3>
-                            <br>
-                            <button class="btn btn-primary">VAI</button>
                         </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/calendario.png" alt="image">
 					    <div class="media-body">
 						    <h3 class="title mb-1"><a href="blog-post.html">VISUALIZZA TUTTI I PAZIENTI CHE HANNO SCELTO IL MEDICO IN UNA DETERMINATA DATA</a></h3>
-                            <br>
-                            <button class="btn btn-primary">VAI</button>
                         </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/ripMedico.jfif" alt="image">
 					    <div class="media-body">
 						    <h3 class="title mb-1"><a href="blog-post.html">CAMBIA IL MEDICO DI UN PAZIENTE</a></h3>
-                            <br>
-                            <button class="btn btn-primary">VAI</button>
                         </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/ripPaziente.jpg" alt="image">
 					    <div class="media-body">
 						    <h3 class="title mb-1"><a href="blog-post.html">ELIMINA UN DETERMINATO PAZIENTE</a></h3>
-                            <br>
-                            <button class="btn btn-primary">VAI</button>
                         </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
@@ -125,7 +109,23 @@
 	    </footer>
     
     </div><!--//main-wrapper-->
-    
+	<div id="config-panel" class="config-panel d-none d-lg-block">
+        <div class="panel-inner">
+            <a id="config-trigger" class="config-trigger config-panel-hide text-center" href="#"><i class="fas fa-cog fa-spin mx-auto" data-fa-transform="down-6" ></i></a>
+            <h5 class="panel-title">Choose Colour</h5>
+            <ul id="color-options" class="list-inline mb-0">
+                <li class="theme-1 active list-inline-item"><a data-style="assets/css/theme-1.css" href="#"></a></li>
+                <li class="theme-2  list-inline-item"><a data-style="assets/css/theme-2.css" href="#"></a></li>
+                <li class="theme-3  list-inline-item"><a data-style="assets/css/theme-3.css" href="#"></a></li>
+                <li class="theme-4  list-inline-item"><a data-style="assets/css/theme-4.css" href="#"></a></li>
+                <li class="theme-5  list-inline-item"><a data-style="assets/css/theme-5.css" href="#"></a></li>
+                <li class="theme-6  list-inline-item"><a data-style="assets/css/theme-6.css" href="#"></a></li>
+                <li class="theme-7  list-inline-item"><a data-style="assets/css/theme-7.css" href="#"></a></li>
+                <li class="theme-8  list-inline-item"><a data-style="assets/css/theme-8.css" href="#"></a></li>
+            </ul>
+            <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
+        </div><!--//panel-inner-->
+    </div><!--//configure-panel-->    
    
     <!-- Javascript -->          
     <script src="assets/plugins/jquery-3.3.1.min.js"></script>
