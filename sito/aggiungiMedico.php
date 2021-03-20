@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title>Bootstrap 4 Blog Template For Developers</title>
+    <title>AGGIUNGI MEDICO</title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -40,7 +40,7 @@
                     <input type="text" id="codice" name="codice" class="form-control mr-md-1 semail" placeholder="Codice Medico">
                     <div id="errCodice"></div>
 
-                    <label class="" for="semail">Cognome</label>
+                    <label class="" for="cognome">Cognome</label>
                     <input type="text" id="cognome" name="cognome" class="form-control mr-md-1 semail" placeholder="Cognome">
                     <div id="errCognome"></div>                    
                     
