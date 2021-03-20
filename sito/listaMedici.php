@@ -22,6 +22,7 @@
 <body>
     <?php
     include('./header.html');
+    include('./SCRIPT/connetti.php');
     ?>
 
 
@@ -29,75 +30,46 @@
         <section class="cta-section theme-bg-light py-5">
 		    <div class="container text-center">
 			    <h2 class="heading">DOTTORI E PAZIENTI</h2>
-			    <div class="intro">:D :D :D :D :D :D :D :D :D :D :D :D</div>
+			    <div class="intro">LISTA MEDICI</div>
 		    </div><!--//container-->
 	    </section>
 	    <section class="blog-list px-3 py-5 p-md-5">
 		    <div class="container">
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/medico.jfif" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="./aggiungiMedico.php">INSERIMENTO NUOVO MEDICO</a></h3>
-                        </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/paziente.jfif" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="./aggiungiPaziente.php">INSERIMENTO NUOVO PAZIENTE</a></h3>
-                        </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/medici.jfif" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="./listaMedici.php">VISUALIZZA LISTA DI TUTTI I MEDICI</a></h3>
-                        </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/medicoPaziente.jfif" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">ASSOCIA UN PAZIENTE A UN MEDICO</a></h3>
-                        </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/pazientiMedico.jfif" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">VISUALIZZA TUTTI I PAZIENTI DI UN MEDICO</a></h3>
-                        </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/calendario.png" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">VISUALIZZA TUTTI I PAZIENTI CHE HANNO SCELTO IL MEDICO IN UNA DETERMINATA DATA</a></h3>
-                        </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/ripMedico.jfif" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">CAMBIA IL MEDICO DI UN PAZIENTE</a></h3>
-                        </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/ripPaziente.jpg" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">ELIMINA UN DETERMINATO PAZIENTE</a></h3>
-                        </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
+			    <?php
+                $medici_sql = mysqli_query($connessione, "SELECT * FROM `medico`");
+                while ($medico = mysqli_fetch_assoc($medici_sql)){
+                    //codice -cognome -nome -dataNascita -luogoNascita
+                    $codice = $medico['codice'];
+                    $cognome = $medico['cognome'];
+                    $nome = $medico['nome'];
+                    $data = $medico['dataNascita'];
+                    $luogoNascita = $medico['luogoNascita'];
+                    echo("
+                    <div class='item mb-5'>
+                        <div class='media'>
+                            <img class='mr-3 img-fluid post-thumb d-none d-md-flex' src='./IMMAGINI/medico.jfif' alt='image'>
+                            <div class='media-body'>
+                                <h3 class='title mb-1'>$nome $cognome</h3>
+                                <table>
+                                    <tr>
+                                        <td>CODICE: </td>
+                                        <td>$codice</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DATA NASCITA: </td>
+                                        <td>$data</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LUOGO NASCITA: </td>
+                                        <td>$luogoNascita</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+			        </div>
+                    ");
+                }
+                ?>
             </div>
 	    </section>
 	    

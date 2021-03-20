@@ -30,7 +30,7 @@
         <section class="cta-section theme-bg-light py-5">
 		    <div class="container text-center">
 			    <h2 class="heading">DOTTORI E PAZIENTI</h2>
-			    <div class="intro">:D :D :D :D :D :D :D :D :D :D :D :D</div>
+			    <div class="intro">INSERIMENTO PAZIENTE</div>
 		    </div><!--//container-->
 	    </section>
 	    <section class="blog-list px-3 py-5 p-md-5">
