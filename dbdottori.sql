@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 21, 2021 alle 16:45
+-- Creato il: Mar 21, 2021 alle 22:14
 -- Versione del server: 10.4.17-MariaDB
 -- Versione PHP: 8.0.2
 
@@ -41,6 +41,7 @@ CREATE TABLE `associazione` (
 
 INSERT INTO `associazione` (`data`, `fkMedico`, `fkPaziente`) VALUES
 ('0000-00-00', 'ABC12', 'AAAAAA00A00A000A'),
+('0000-00-00', 'ABC11', 'AAAAAA00A00A000B'),
 ('0000-00-00', 'ABC12', 'AAAAAA00A11A000A');
 
 -- --------------------------------------------------------
