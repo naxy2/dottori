@@ -62,7 +62,7 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/medicoPaziente.jfif" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">ASSOCIA UN PAZIENTE A UN MEDICO</a></h3>
+						    <h3 class="title mb-1"><a href="./aggiungiAssociazione.php">ASSOCIA UN PAZIENTE A UN MEDICO</a></h3>
                         </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->

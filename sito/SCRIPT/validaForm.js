@@ -99,3 +99,21 @@ function validaPaziente(){
 
     return valido;
 }
+
+function validaAssociazione(){
+    data = document.form.data.value;
+    paziente = document.form.paziente.value;
+    valido = true;
+    if (!data.match(vuota) && new Date(data) > new Date()){
+        valido = false;
+        document.getElementById("errData").innerText = "La data non può essere nel FuTuRoOoOo";
+    }else{
+        document.getElementById("errData").innerText = "";
+    }
+
+    if (valido){
+        valido = confirm(`Eliminare eventuali associazioni di ${paziente}?`);
+    }
+
+    return valido;
+}

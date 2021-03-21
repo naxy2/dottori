@@ -17,8 +17,13 @@ if (isset($_POST['codice']) && isset($_POST['cognome']) && isset($_POST['nome'])
     include('./connetti.php');
     session_start();
 
-    mysqli_query($connessione, "INSERT INTO `paziente`(`CF`, `cognome`, `nome`, `dataNascita`, `luogoNascita`, `indirizzo`) VALUES ('$codice','$cognome','$nome','$data','$luogo','$indirizzo')");
-    $_SESSION['aggiuntoPaziente'] = $nome;
+    $successo = mysqli_query($connessione, "INSERT INTO `paziente`(`CF`, `cognome`, `nome`, `dataNascita`, `luogoNascita`, `indirizzo`) VALUES ('$codice','$cognome','$nome','$data','$luogo','$indirizzo')");
+
+    if ($successo){
+        $_SESSION['aggiuntoPaziente'] = $nome;
+    }else{
+        $_SESSION['errorePaziente'] = true;
+    }
     header('location:../aggiungiPaziente.php');
 }
 ?>

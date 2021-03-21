@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title>AGGIUNGI PAZIENTE</title>
+    <title>AGGIUNGI MEDICO</title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -22,6 +22,7 @@
 <body>
     <?php
     session_start();
+    include('./SCRIPT/connetti.php');
     include('./header.html');
     ?>
 
@@ -30,46 +31,48 @@
         <section class="cta-section theme-bg-light py-5">
 		    <div class="container text-center">
 			    <h2 class="heading">DOTTORI E PAZIENTI</h2>
-			    <div class="intro">INSERIMENTO PAZIENTE</div>
+			    <div class="intro">ASSEGNO UN MEDICO A UN PAZIENTE</div>
 		    </div><!--//container-->
 	    </section>
 	    <section class="blog-list px-3 py-5 p-md-5">
-            <form name="form" class="signup-form justify-content-center pt-3" method="POST" action="./SCRIPT/aggiungiPaziente.php" onsubmit="return validaPaziente()">
+            <form name="form" class="signup-form justify-content-center pt-3" method="POST" action="./SCRIPT/aggiungiAssociazione.php" onsubmit="return validaAssociazione()">
                 <div class="form-group">
-                    <label class="" for="codice">Codice Fiscale</label>
-                    <input type="text" id="codice" name="codice" class="form-control mr-md-1 semail" placeholder="Codice Fiscale">
-                    <div id="errCodice"></div>
+                    <label class="" for="medico">Medico</label><br>
+                    <select name="medico" class="" id="medico">
+                        <?php
+                        $medici_sql = mysqli_query($connessione, "SELECT * FROM `medico` ORDER BY `cognome`, `nome`");
+                        while ($medico = mysqli_fetch_assoc($medici_sql)){
+                            echo("
+                                <option value='{$medico['codice']}'>{$medico['cognome']} {$medico['nome']} ({$medico['codice']})</option>
+                            ");
+                        }
+                        ?>
+                    </select>
+                    <div id="errMedico"></div>  
 
-                    <label class="" for="semail">Cognome</label>
-                    <input type="text" id="cognome" name="cognome" class="form-control mr-md-1 semail" placeholder="Cognome">
-                    <div id="errCognome"></div>                    
+                    <label class="" for="paziente">Paziente</label><br>
+                    <select name="paziente" class="" id="paziente">
+                        <?php
+                        $pazienti_sql = mysqli_query($connessione, "SELECT * FROM `paziente` ORDER BY `cognome`, `nome`");
+                        while ($paziente = mysqli_fetch_assoc($pazienti_sql)){
+                            echo("
+                                <option value='{$paziente['CF']}'>{$paziente['cognome']} {$paziente['nome']} ({$paziente['CF']})</option>
+                            ");
+                        }
+                        ?>
+                    </select>
+                    <div id="errPaziente"></div>                    
                     
-                    <label class="" for="nome">Nome</label>
-                    <input type="tezt" id="nome" name="nome" class="form-control mr-md-1 semail" placeholder="Nome">
-                    <div id="errNome"></div>
-                    
-                    <label class="" for="data">Data Nascita</label>
-                    <input type="date" id="data" name="data" class="form-control mr-md-1 semail" placeholder="Data Nascita">
+                    <label class="" for="data">Data Associazione</label>
+                    <input type="date" id="data" name="data" class="form-control mr-md-1" placeholder="Data">
                     <div id="errData"></div>
-
-                    <label class="" for="luogo">Luogo Nascita</label>
-                    <input type="text" id="luogo" name="luogo" class="form-control mr-md-1 semail" placeholder="Luogo Nascita">
-                    <div id="errLuogo"></div>         
-
-                    <label class="" for="indirizzo">Indirizzo</label>
-                    <input type="text" id="indirizzo" name="indirizzo" class="form-control mr-md-1 semail" placeholder="Indirizzo">
-                    <div id="errIndirizzo"></div>              
                 </div>    
                 <button type="submit" class="btn btn-primary">AGGIUNGI</button>
             </form>
             <?php
-            if (isset($_SESSION['aggiuntoPaziente'])){
-                echo("<p>AGGIUNTO {$_SESSION['aggiuntoPaziente']}</p>");
-                unset($_SESSION['aggiuntoPaziente']);
-            }
-            if (isset($_SESSION['errorePaziente']) && $_SESSION['errorePaziente']){
-                $_SESSION['errorePaziente'] = false;
-                echo("<p>QUESTO CODICE FISCALE È GIÀ PRESENTE NEL SERVER</p>");
+            if (isset($_SESSION['aggiuntoMedico'])){
+                echo("<p>AGGIUNTO {$_SESSION['aggiuntoMedico']}</p>");
+                unset($_SESSION['aggiuntoMedico']);
             }
             ?>
 	    </section>
