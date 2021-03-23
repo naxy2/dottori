@@ -110,6 +110,10 @@ function validaAssociazione(){
     }else{
         document.getElementById("errData").innerText = "";
     }
+    
+    if (paziente.match(vuota)){
+        valido=false;
+    }
 
     /*if (valido){
         valido = confirm(`Eliminare eventuali associazioni di ${paziente}?`);

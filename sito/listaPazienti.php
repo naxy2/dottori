@@ -37,7 +37,7 @@
 		    <div class="container">
                 <h2>SELEZIONARE UN MEDICO</h2>
 			    <?php
-                $medici_sql = mysqli_query($connessione, "SELECT * FROM `medico`");
+                $medici_sql = mysqli_query($connessione, "SELECT * FROM `medico` ORDER BY nome,cognome");
                 while ($medico = mysqli_fetch_assoc($medici_sql)){
                     //codice -cognome -nome -dataNascita -luogoNascita
                     $codice = $medico['codice'];
@@ -82,7 +82,7 @@
 
             echo("
             <div class='container'>
-                <h2>PAZIENTI</h2>");
+                <h2>PAZIENTI DI $medico</h2>");
             $pazienti_sql = mysqli_query($connessione, "SELECT * FROM paziente JOIN associazione ON (fkPaziente=CF) WHERE fkMedico='$medico'");
             while ($paziente = mysqli_fetch_assoc($pazienti_sql)){
                 //codice -cognome -nome -dataNascita -luogoNascita
