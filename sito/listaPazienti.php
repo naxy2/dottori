@@ -83,7 +83,7 @@
             echo("
             <div class='container'>
                 <h2>PAZIENTI DI $medico</h2>");
-            $pazienti_sql = mysqli_query($connessione, "SELECT * FROM paziente JOIN associazione ON (fkPaziente=CF) WHERE fkMedico='$medico'");
+            $pazienti_sql = mysqli_query($connessione, "SELECT * FROM paziente JOIN associazione ON (fkPaziente=CF) WHERE fkMedico='$medico' ORDER BY nome,cognome");
             while ($paziente = mysqli_fetch_assoc($pazienti_sql)){
                 //codice -cognome -nome -dataNascita -luogoNascita
                 $codice = $paziente['CF'];
