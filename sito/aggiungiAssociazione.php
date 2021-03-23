@@ -53,7 +53,7 @@
                     <label class="" for="paziente">Paziente</label><br>
                     <select name="paziente" class="" id="paziente">
                         <?php
-                        $pazienti_sql = mysqli_query($connessione, "SELECT * FROM `paziente` ORDER BY `cognome`, `nome`");
+                        $pazienti_sql = mysqli_query($connessione, "SELECT * FROM `paziente` WHERE CF NOT IN (SELECT fkPaziente FROM associazione) ORDER BY `cognome`, `nome`");
                         while ($paziente = mysqli_fetch_assoc($pazienti_sql)){
                             echo("
                                 <option value='{$paziente['CF']}'>{$paziente['cognome']} {$paziente['nome']} ({$paziente['CF']})</option>

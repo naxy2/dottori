@@ -111,9 +111,9 @@ function validaAssociazione(){
         document.getElementById("errData").innerText = "";
     }
 
-    if (valido){
+    /*if (valido){
         valido = confirm(`Eliminare eventuali associazioni di ${paziente}?`);
-    }
+    }*/
 
     return valido;
 }
