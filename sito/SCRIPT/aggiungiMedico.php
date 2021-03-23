@@ -17,6 +17,6 @@ if (isset($_POST['codice']) && isset($_POST['cognome']) && isset($_POST['nome'])
 
     mysqli_query($connessione, "INSERT INTO `medico`(`codice`, `cognome`, `nome`, `dataNascita`, `luogoNascita`) VALUES ('$codice','$cognome','$nome','$data','$luogo')");
     $_SESSION['aggiuntoMedico'] = $nome;
-    header('location:../aggiungiMedico.php');
 }
+header('location:../aggiungiMedico.php');
 ?>

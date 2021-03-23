@@ -15,6 +15,6 @@ if (isset($_POST['medico']) && isset($_POST['paziente']) && isset($_POST['data']
         $successo = mysqli_query($connessione, "INSERT INTO `associazione`(`data`, `fkMedico`, `fkPaziente`) VALUES ('$data','$medico','$paziente')");
     }
 
-    header('location:../aggiungiAssociazione.php');
 }
+header('location:../aggiungiAssociazione.php');
 ?>

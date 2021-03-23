@@ -24,6 +24,6 @@ if (isset($_POST['codice']) && isset($_POST['cognome']) && isset($_POST['nome'])
     }else{
         $_SESSION['errorePaziente'] = true;
     }
-    header('location:../aggiungiPaziente.php');
 }
+header('location:../aggiungiPaziente.php');
 ?>
