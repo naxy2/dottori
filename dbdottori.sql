@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 21, 2021 alle 22:14
+-- Creato il: Mar 23, 2021 alle 20:39
 -- Versione del server: 10.4.17-MariaDB
 -- Versione PHP: 8.0.2
 
@@ -40,9 +40,10 @@ CREATE TABLE `associazione` (
 --
 
 INSERT INTO `associazione` (`data`, `fkMedico`, `fkPaziente`) VALUES
-('0000-00-00', 'ABC12', 'AAAAAA00A00A000A'),
-('0000-00-00', 'ABC11', 'AAAAAA00A00A000B'),
-('0000-00-00', 'ABC12', 'AAAAAA00A11A000A');
+('2021-03-23', 'ABC12', 'AAAAAA00A00A000A'),
+('2021-03-23', 'ABC13', 'AAAAAA00A00A000C'),
+('2021-03-23', 'ABC13', 'AAAAAA00A00A000D'),
+('2021-03-23', 'ABC12', 'AAAAAA00A11A000A');
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,8 @@ CREATE TABLE `medico` (
 
 INSERT INTO `medico` (`codice`, `cognome`, `nome`, `dataNascita`, `luogoNascita`) VALUES
 ('ABC11', 'Palmieri', 'Romeo', '1965-10-11', 'Palermo'),
-('ABC12', 'Esposito', 'Ciro', '1969-12-12', 'Napoli');
+('ABC12', 'Esposito', 'Ciro', '1969-12-12', 'Napoli'),
+('ABC13', 'Chelarau', 'Mircea', '1972-10-18', 'Napoli');
 
 -- --------------------------------------------------------
 
@@ -87,8 +89,9 @@ CREATE TABLE `paziente` (
 
 INSERT INTO `paziente` (`CF`, `cognome`, `nome`, `dataNascita`, `luogoNascita`, `indirizzo`) VALUES
 ('AAAAAA00A00A000A', 'Costa', 'Alessandro', '2000-10-10', 'CIVITAVECCHIA', 'casa sua'),
-('AAAAAA00A00A000B', 'Rossi', 'Mario', '1990-02-21', 'Roma', 'via Lazio 15'),
 ('AAAAAA00A00A000C', 'Rossi', 'Alessandro', '2000-12-12', 'Roma', 'casa sua'),
+('AAAAAA00A00A000D', 'Rossi', 'Daniele', '0001-01-01', 'gerusalemme', 'Via delle stalle 45'),
+('AAAAAA00A00A000E', 'Rossi', 'Mario', '2012-12-10', 'Roma', 'Via Lazio 12'),
 ('AAAAAA00A11A000A', 'Oniarti ', 'Diego', '2002-10-18', 'Trento', 'casa mia');
 
 --
@@ -123,8 +126,8 @@ ALTER TABLE `paziente`
 -- Limiti per la tabella `associazione`
 --
 ALTER TABLE `associazione`
-  ADD CONSTRAINT `associazione_paziente` FOREIGN KEY (`fkPaziente`) REFERENCES `paziente` (`CF`),
-  ADD CONSTRAINT `fkMedico` FOREIGN KEY (`fkMedico`) REFERENCES `medico` (`codice`);
+  ADD CONSTRAINT `associazione_paziente` FOREIGN KEY (`fkPaziente`) REFERENCES `paziente` (`CF`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fkMedico` FOREIGN KEY (`fkMedico`) REFERENCES `medico` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
