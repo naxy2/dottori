@@ -78,7 +78,7 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="./IMMAGINI/calendario.png" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">VISUALIZZA TUTTI I PAZIENTI CHE HANNO SCELTO IL MEDICO IN UNA DETERMINATA DATA</a></h3>
+						    <h3 class="title mb-1"><a href="./listaPazientiData.php">VISUALIZZA TUTTI I PAZIENTI CHE HANNO SCELTO IL MEDICO IN UNA DETERMINATA DATA</a></h3>
                         </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->

@@ -30,61 +30,33 @@
         <section class="cta-section theme-bg-light py-5">
 		    <div class="container text-center">
 			    <h2 class="heading">DOTTORI E PAZIENTI</h2>
-			    <div class="intro">LISTA PAZIENTI MEDICO</div>
+			    <div class="intro">LISTA PAZIENTI DATA</div>
 		    </div><!--//container-->
 	    </section>
 	    <section class="blog-list px-3 py-5 p-md-5">
 		    <div class="container">
-                <h2>SELEZIONARE UN MEDICO</h2>
-			    <?php
-                $medici_sql = mysqli_query($connessione, "SELECT * FROM `medico`");
-                while ($medico = mysqli_fetch_assoc($medici_sql)){
-                    //codice -cognome -nome -dataNascita -luogoNascita
-                    $codice = $medico['codice'];
-                    $cognome = $medico['cognome'];
-                    $nome = $medico['nome'];
-                    $data = $medico['dataNascita'];
-                    $luogoNascita = $medico['luogoNascita'];
-                    echo("
-                    <div class='item mb-5'>
-                        <div class='media'>
-                            <img class='mr-3 img-fluid post-thumb d-none d-md-flex' src='./IMMAGINI/medico.jfif' alt='image'>
-                            <div class='media-body'>
-                                <h3 class='title mb-1'><a href='./listaPazienti.php?medico=$codice'>$nome $cognome</a></h3>
-                                <table>
-                                    <tr>
-                                        <td>CODICE: </td>
-                                        <td>$codice</td>
-                                    </tr>
-                                    <tr>
-                                        <td>DATA NASCITA: </td>
-                                        <td>$data</td>
-                                    </tr>
-                                    <tr>
-                                        <td>LUOGO NASCITA: </td>
-                                        <td>$luogoNascita</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-			        </div>
-                    ");
-                }
-                ?>
+                <h2>SELEZIONA DATA</h2>
+			    <form action="#" method="get">
+                    <label for="data">DATA</label>
+                    <input type="date" name="data" id="data" class="form-control mr-md-1" required>
+                    <button type="submit" class="btn btn-primary">CERCA</button>
+                </form>
             </div>
 	    </section>
 
         <?php
         $medico;
-        if (isset($_GET['medico'])){
-            $medico = $_GET['medico'];
+        if (isset($_GET['data'])){
+            $data = $_GET['data'];
             echo('<hr><section class="blog-list px-3 py-5 p-md-5">');
 
             echo("
             <div class='container'>
                 <h2>PAZIENTI</h2>");
-            $pazienti_sql = mysqli_query($connessione, "SELECT * FROM paziente JOIN associazione ON (fkPaziente=CF) WHERE fkMedico='$medico'");
+            $pazienti_sql = mysqli_query($connessione, "SELECT * FROM paziente JOIN associazione ON (fkPaziente=CF) WHERE data='$data'");
+            $presenti = false;
             while ($paziente = mysqli_fetch_assoc($pazienti_sql)){
+                $presenti = true;
                 //codice -cognome -nome -dataNascita -luogoNascita
                 $codice = $paziente['CF'];
                 $cognome = $paziente['cognome'];
@@ -121,6 +93,9 @@
                 </div>
                 ");
             }
+            if (!$presenti){
+                echo("<h2>Nessuno trovato :'c</h2>");
+            }
             echo("
             </div>
             </section>");
@@ -139,7 +114,6 @@
     <?php
     include("./colorPicker.html");
     ?>
-
    
     <!-- Javascript -->          
     <script src="assets/plugins/jquery-3.3.1.min.js"></script>
