@@ -38,7 +38,8 @@
             <form name="form" class="signup-form justify-content-center pt-3" method="POST" action="./SCRIPT/aggiungiAssociazione.php" onsubmit="return validaAssociazione()">
                 <div class="form-group">
                     <label class="" for="medico">Medico</label><br>
-                    <select name="medico" class="" id="medico">
+                    <input list="medici" name="medico" class="" id="medico">
+                    <datalist id="medici">
                         <?php
                         $medici_sql = mysqli_query($connessione, "SELECT * FROM `medico` ORDER BY `cognome`, `nome`");
                         while ($medico = mysqli_fetch_assoc($medici_sql)){
@@ -47,11 +48,12 @@
                             ");
                         }
                         ?>
-                    </select>
+                    </datalist>
                     <div id="errMedico"></div>  
 
                     <label class="" for="paziente">Paziente</label><br>
-                    <select name="paziente" class="" id="paziente">
+                    <input list = "pazienti" name="paziente" class="" id="paziente">
+                    <datalist id="pazienti">
                         <?php
                         $pazienti_sql = mysqli_query($connessione, "SELECT * FROM `paziente` WHERE CF NOT IN (SELECT fkPaziente FROM associazione) ORDER BY `cognome`, `nome`");
                         while ($paziente = mysqli_fetch_assoc($pazienti_sql)){
@@ -60,7 +62,7 @@
                             ");
                         }
                         ?>
-                    </select>
+                    </datalist>
                     <div id="errPaziente"></div>                    
                     
                     <label class="" for="data">Data Associazione</label>
