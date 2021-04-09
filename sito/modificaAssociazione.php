@@ -63,7 +63,9 @@
 
             echo("
             <div class='container'>
-                <h2>DOTTORI</h2>");
+                <h2>DOTTORI</h2>
+                <form action='./SCRIPT/modificaAssociazione.php' method='POST' onsubmit='return confirm(\"SICURO DI VOLER MODIFICARE IL MEDICO DI QUESTO PAZIENTE?\")'>
+                <input type = 'hidden' name='paziente' value='$paziente'/>");
             $dottori_sql = mysqli_query($connessione, "SELECT * FROM medico WHERE codice != (SELECT fkMedico FROM associazione WHERE fkPaziente = '$paziente')");
             $presenti = false;
             while ($dottore = mysqli_fetch_assoc($dottori_sql)){
@@ -80,7 +82,7 @@
                     <div class='media'>
                         <img class='mr-3 img-fluid post-thumb d-none d-md-flex' src='./IMMAGINI/paziente.jfif' alt='image'>
                         <div class='media-body'>
-                            <h3 class='title mb-1'><a href='./SCRIPT/modificaAssociazione.php?paziente=$paziente&dottore=$codice'>$nome $cognome</a></h3>
+                            <h3 class='title mb-1'>$nome $cognome</h3>
                             <table>
                                 <tr>
                                     <td>CODICE FISCALE: </td>
@@ -95,6 +97,7 @@
                                     <td>$luogo</td>
                                 </tr>
                             </table>
+                            <button name='dottore' type='submit' value='$codice' class='btn btn-primary'>ASSEGNA</button>
                         </div>
                     </div>
                 </div>
@@ -104,6 +107,7 @@
                 echo("<h2>Questo paziente non ha un dottore da moddificare</h2>");
             }
             echo("
+            </form>
             </div>
             </section>");
         }
