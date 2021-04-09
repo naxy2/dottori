@@ -36,23 +36,24 @@
 	    <section class="blog-list px-3 py-5 p-md-5">
 		    <div class="container">
                 <h2>SELEZIONA PAZIENTE</h2>
-			    <select name="pazienti" id="pazienti" onchange="modifica(this)">
+			    <!--<select name="pazienti" id="pazienti" onchange="modifica(this)">
                     <option value=""></option>
+                    
+                </select>-->
+
+                <input list="scelte" name="pazienti" onchange="modifica(this)" <?php echo((isset($_GET['paziente']))?"value='{$_GET['paziente']}'":""); ?>>
+                <datalist id="scelte">
                     <?php
                     $pazienti_sql = mysqli_query($connessione, "SELECT * FROM `paziente` JOIN `associazione` ON (fkPaziente=CF) ORDER BY nome,cognome");
                     while($paziente = mysqli_fetch_assoc($pazienti_sql)){
                         $cf = $paziente['CF'];
                         $nome = $paziente['nome'];
                         $cognome = $paziente['cognome'];
-                        if (isset($_GET['paziente'])){
-                            $tmp = ($_GET['paziente']==$cf)?'SELECTED':'';
-                            echo("<option value='$cf' $tmp>$nome $cognome</option>");
-                        }else{
-                            echo("<option value='$cf'>$nome $cognome</option>");
-                        }
+                        echo("<option value='$cf'>$nome $cognome</option>");
                     }
                     ?>
-                </select>
+                </datalist>
+
             </div>
 	    </section>
 
