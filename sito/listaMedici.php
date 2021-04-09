@@ -36,7 +36,7 @@
 	    <section class="blog-list px-3 py-5 p-md-5">
 		    <div class="container">
 			    <?php
-                $medici_sql = mysqli_query($connessione, "SELECT * FROM `medico`");
+                $medici_sql = mysqli_query($connessione, "SELECT * FROM `medico` ORDER BY nome,cognome");
                 while ($medico = mysqli_fetch_assoc($medici_sql)){
                     //codice -cognome -nome -dataNascita -luogoNascita
                     $codice = $medico['codice'];
