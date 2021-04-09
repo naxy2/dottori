@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 23, 2021 alle 20:39
--- Versione del server: 10.4.17-MariaDB
--- Versione PHP: 8.0.2
+-- Creato il: Apr 10, 2021 alle 00:58
+-- Versione del server: 10.4.16-MariaDB
+-- Versione PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -22,28 +22,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `dbdottori` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `dbdottori`;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `associazione`
---
-
-CREATE TABLE `associazione` (
-  `data` date NOT NULL DEFAULT current_timestamp(),
-  `fkMedico` varchar(16) NOT NULL,
-  `fkPaziente` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dump dei dati per la tabella `associazione`
---
-
-INSERT INTO `associazione` (`data`, `fkMedico`, `fkPaziente`) VALUES
-('2021-03-23', 'ABC12', 'AAAAAA00A00A000A'),
-('2021-03-23', 'ABC13', 'AAAAAA00A00A000C'),
-('2021-03-23', 'ABC13', 'AAAAAA00A00A000D'),
-('2021-03-23', 'ABC12', 'AAAAAA00A11A000A');
 
 -- --------------------------------------------------------
 
@@ -80,31 +58,25 @@ CREATE TABLE `paziente` (
   `nome` varchar(30) NOT NULL,
   `dataNascita` date NOT NULL,
   `luogoNascita` varchar(50) NOT NULL,
-  `indirizzo` varchar(50) NOT NULL
+  `indirizzo` varchar(50) NOT NULL,
+  `fkMedico` varchar(16) DEFAULT NULL,
+  `dataAssociazione` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `paziente`
 --
 
-INSERT INTO `paziente` (`CF`, `cognome`, `nome`, `dataNascita`, `luogoNascita`, `indirizzo`) VALUES
-('AAAAAA00A00A000A', 'Costa', 'Alessandro', '2000-10-10', 'CIVITAVECCHIA', 'casa sua'),
-('AAAAAA00A00A000C', 'Rossi', 'Alessandro', '2000-12-12', 'Roma', 'casa sua'),
-('AAAAAA00A00A000D', 'Rossi', 'Daniele', '0001-01-01', 'gerusalemme', 'Via delle stalle 45'),
-('AAAAAA00A00A000E', 'Rossi', 'Mario', '2012-12-10', 'Roma', 'Via Lazio 12'),
-('AAAAAA00A11A000A', 'Oniarti ', 'Diego', '2002-10-18', 'Trento', 'casa mia');
+INSERT INTO `paziente` (`CF`, `cognome`, `nome`, `dataNascita`, `luogoNascita`, `indirizzo`, `fkMedico`, `dataAssociazione`) VALUES
+('AAAAAA00A00A000A', 'Costa', 'Alessandro', '2000-10-10', 'CIVITAVECCHIA', 'casa sua', NULL, NULL),
+('AAAAAA00A00A000C', 'Rossi', 'Alessandro', '2000-12-12', 'Roma', 'casa sua', NULL, NULL),
+('AAAAAA00A00A000D', 'Rossi', 'Daniele', '0001-01-01', 'gerusalemme', 'Via delle stalle 45', NULL, NULL),
+('AAAAAA00A00A000E', 'Rossi', 'Mario', '2012-12-10', 'Roma', 'Via Lazio 12', NULL, NULL),
+('AAAAAA00A11A000A', 'Oniarti ', 'Diego', '2002-10-18', 'Trento', 'casa mia', NULL, NULL);
 
 --
 -- Indici per le tabelle scaricate
 --
-
---
--- Indici per le tabelle `associazione`
---
-ALTER TABLE `associazione`
-  ADD PRIMARY KEY (`fkPaziente`),
-  ADD KEY `fkPaziente` (`fkPaziente`),
-  ADD KEY `fkMedico` (`fkMedico`);
 
 --
 -- Indici per le tabelle `medico`
@@ -117,17 +89,6 @@ ALTER TABLE `medico`
 --
 ALTER TABLE `paziente`
   ADD PRIMARY KEY (`CF`);
-
---
--- Limiti per le tabelle scaricate
---
-
---
--- Limiti per la tabella `associazione`
---
-ALTER TABLE `associazione`
-  ADD CONSTRAINT `associazione_paziente` FOREIGN KEY (`fkPaziente`) REFERENCES `paziente` (`CF`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fkMedico` FOREIGN KEY (`fkMedico`) REFERENCES `medico` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
