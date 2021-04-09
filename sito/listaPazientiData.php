@@ -53,7 +53,7 @@
             echo("
             <div class='container'>
                 <h2>PAZIENTI</h2>");
-            $pazienti_sql = mysqli_query($connessione, "SELECT * FROM paziente JOIN associazione ON (fkPaziente=CF) WHERE data='$data'");
+            $pazienti_sql = mysqli_query($connessione, "SELECT * FROM paziente WHERE data='$data'");
             $presenti = false;
             while ($paziente = mysqli_fetch_assoc($pazienti_sql)){
                 $presenti = true;
