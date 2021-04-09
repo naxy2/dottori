@@ -44,7 +44,7 @@
                 <input list="scelte" name="pazienti" onchange="modifica(this)" <?php echo((isset($_GET['paziente']))?"value='{$_GET['paziente']}'":""); ?>>
                 <datalist id="scelte">
                     <?php
-                    $pazienti_sql = mysqli_query($connessione, "SELECT * FROM `paziente` JOIN `associazione` ON (fkPaziente=CF) ORDER BY nome,cognome");
+                    $pazienti_sql = mysqli_query($connessione, "SELECT * FROM `paziente` WHERE fkMedico IS NOT NULL ORDER BY nome,cognome");
                     while($paziente = mysqli_fetch_assoc($pazienti_sql)){
                         $cf = $paziente['CF'];
                         $nome = $paziente['nome'];
@@ -67,7 +67,7 @@
                 <h2>DOTTORI</h2>
                 <form action='./SCRIPT/modificaAssociazione.php' method='POST' onsubmit='return confirm(\"SICURO DI VOLER MODIFICARE IL MEDICO DI QUESTO PAZIENTE?\")'>
                 <input type = 'hidden' name='paziente' value='$paziente'/>");
-            $dottori_sql = mysqli_query($connessione, "SELECT * FROM medico WHERE codice != (SELECT fkMedico FROM associazione WHERE fkPaziente = '$paziente')");
+            $dottori_sql = mysqli_query($connessione, "SELECT * FROM medico WHERE codice != (SELECT fkMedico FROM paziente WHERE CF = '$paziente')");
             $presenti = false;
             while ($dottore = mysqli_fetch_assoc($dottori_sql)){
                 $presenti = true;
