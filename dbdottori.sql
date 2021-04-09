@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 10, 2021 alle 00:58
+-- Creato il: Apr 10, 2021 alle 01:28
 -- Versione del server: 10.4.16-MariaDB
 -- Versione PHP: 7.4.12
 
@@ -88,7 +88,18 @@ ALTER TABLE `medico`
 -- Indici per le tabelle `paziente`
 --
 ALTER TABLE `paziente`
-  ADD PRIMARY KEY (`CF`);
+  ADD PRIMARY KEY (`CF`),
+  ADD KEY `fkMedico` (`fkMedico`);
+
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella `paziente`
+--
+ALTER TABLE `paziente`
+  ADD CONSTRAINT `fkMedico` FOREIGN KEY (`fkMedico`) REFERENCES `medico` (`codice`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
