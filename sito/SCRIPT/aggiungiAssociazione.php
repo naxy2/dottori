@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['username'])){
+    header("location:../index.php");
+}
+?>
+
+<?php
 if (isset($_POST['medico']) && isset($_POST['paziente']) && isset($_POST['data'])){
     $medico = $_POST['medico'];
     $paziente = $_POST['paziente'];
@@ -6,7 +13,6 @@ if (isset($_POST['medico']) && isset($_POST['paziente']) && isset($_POST['data']
 
 
     include('./connetti.php');
-    session_start();
 
     //mysqli_query($connessione, "DELETE FROM `associazione` WHERE `fkPaziente`=$paziente");
     if ($data!=""){

@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])){
+    header("location:./index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -21,7 +28,6 @@
 
 <body>
     <?php
-    session_start();
     include('./SCRIPT/connetti.php');
     include('./header.html');
     ?>

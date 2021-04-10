@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['username'])){
+    header("location:../index.php");
+}
+?>
+
+<?php
 //codice
 //cognome
 //nome
@@ -15,7 +22,6 @@ if (isset($_POST['codice']) && isset($_POST['cognome']) && isset($_POST['nome'])
     $indirizzo = $_POST['indirizzo'];
 
     include('./connetti.php');
-    session_start();
 
     $successo = mysqli_query($connessione, "INSERT INTO `paziente`(`CF`, `cognome`, `nome`, `dataNascita`, `luogoNascita`, `indirizzo`) VALUES ('$codice','$cognome','$nome','$data','$luogo','$indirizzo')");
 

@@ -121,3 +121,25 @@ function validaAssociazione(){
 
     return valido;
 }
+
+function validaLogin(){
+    username = document.form.username.value;
+    password = document.form.password.value;
+
+    valido = true;
+    if (!(password.match(/[A-Z]/) && password.match(/[0-9]/) && password.match(/^.{6,}$/))){
+        valido = false;
+        document.getElementById("errPassword").innerText = "La password deve avere almeno 6 caratteri, una maiuscola e una minuscola";
+    }else{
+        document.getElementById("errPassword").innerText = "";
+    }
+
+    if (username.match(/^\s*$/)){
+        valido = false;
+        document.getElementById("errUsername").innerText = "Il nome deve contenere lettere";
+    }else{
+        document.getElementById("errUsername").innerText = "";
+    }
+
+    return valido;
+}
