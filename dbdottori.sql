@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 10, 2021 alle 01:28
+-- Creato il: Apr 10, 2021 alle 18:28
 -- Versione del server: 10.4.16-MariaDB
 -- Versione PHP: 7.4.12
 
@@ -22,6 +22,25 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `dbdottori` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `dbdottori`;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `credenziali`
+--
+
+CREATE TABLE `credenziali` (
+  `username` varchar(16) NOT NULL,
+  `password` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `credenziali`
+--
+
+INSERT INTO `credenziali` (`username`, `password`) VALUES
+('diego', 'Diego0'),
+('super', 'Super0');
 
 -- --------------------------------------------------------
 
@@ -68,15 +87,22 @@ CREATE TABLE `paziente` (
 --
 
 INSERT INTO `paziente` (`CF`, `cognome`, `nome`, `dataNascita`, `luogoNascita`, `indirizzo`, `fkMedico`, `dataAssociazione`) VALUES
-('AAAAAA00A00A000A', 'Costa', 'Alessandro', '2000-10-10', 'CIVITAVECCHIA', 'casa sua', NULL, NULL),
-('AAAAAA00A00A000C', 'Rossi', 'Alessandro', '2000-12-12', 'Roma', 'casa sua', NULL, NULL),
-('AAAAAA00A00A000D', 'Rossi', 'Daniele', '0001-01-01', 'gerusalemme', 'Via delle stalle 45', NULL, NULL),
+('AAAAAA00A00A000A', 'Costa', 'Alessandro', '2000-10-10', 'CIVITAVECCHIA', 'casa sua', 'ABC12', '2021-04-10'),
+('AAAAAA00A00A000B', 'Arrangiati', 'tu', '0001-01-01', 'lì', 'qui', NULL, NULL),
+('AAAAAA00A00A000C', 'Rossi', 'Alessandro', '2000-12-12', 'Roma', 'casa sua', 'ABC11', '2021-04-10'),
+('AAAAAA00A00A000D', 'Rossi', 'Daniele', '0001-01-01', 'gerusalemme', 'Via delle stalle 45', 'ABC11', '2009-11-10'),
 ('AAAAAA00A00A000E', 'Rossi', 'Mario', '2012-12-10', 'Roma', 'Via Lazio 12', NULL, NULL),
-('AAAAAA00A11A000A', 'Oniarti ', 'Diego', '2002-10-18', 'Trento', 'casa mia', NULL, NULL);
+('AAAAAA00A11A000A', 'Oniarti ', 'Diego', '2002-10-18', 'Trento', 'casa mia', 'ABC12', '2021-04-10');
 
 --
 -- Indici per le tabelle scaricate
 --
+
+--
+-- Indici per le tabelle `credenziali`
+--
+ALTER TABLE `credenziali`
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Indici per le tabelle `medico`
